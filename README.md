@@ -1,8 +1,11 @@
-# React + Vite
+# Space App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Trabajando con styled components y archivos estáticos.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Screenshots
+
+![App Screenshot](https://github.com/DanielRiverol/space-app/blob/b7602626c7e1853915f0f967e4fef5ddca644727/Recursos/screenshots/screenshot-1.png)
+![App Screenshot](https://github.com/DanielRiverol/space-app/blob/b7602626c7e1853915f0f967e4fef5ddca644727/Recursos/screenshots/screenshot-2.png)
+
+
