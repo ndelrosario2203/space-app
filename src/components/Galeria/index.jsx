@@ -3,6 +3,9 @@ import Titulo from "../Titulo"
 import Populares from "./Populares"
 import Tag from "./Tags"
 import Imagen from "./Imagen"
+import Cargando from "../Cargando"
+import { useContext } from "react"
+import { GlobalContext } from "../../context/GlobalContext"
 
 const GaleriaContainer = styled.div`
 display: flex;
@@ -20,31 +23,34 @@ const ImagenesContainer = styled.section`
 `
 
 
-const Galeria = ({ fotos = [], alSeleccionarFoto,alAlternarFavorito, filtro }) => {
+
+const Galeria = () => {
+
+    const { state } = useContext(GlobalContext);
 
     return (
-        <>
-            <Tag />
-            <GaleriaContainer>
-                <SeccionFluida>
-                    <Titulo>Navegue por la galería</Titulo>
-                    <ImagenesContainer>
-                        {fotos.filter(foto => { return  filtro == "" || foto.titulo.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
-                        .includes(filtro.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))})
-                        .map(foto => <Imagen
-                        alAlternarFavorito= {alAlternarFavorito}
-                        alSolicitarZoom={alSeleccionarFoto}
-                            key={foto.id}
-                            foto={foto} />)
-                        }
-                       
-                        
-                    </ImagenesContainer>
-                </SeccionFluida>
-                <Populares />
+        state.fotosDeGaleria.length == 0 ?
+            <Cargando></Cargando> :
+            <>
+                <Tag />
+                <GaleriaContainer>
+                    <SeccionFluida>
+                        <Titulo>Navegue por la galería</Titulo>
+                        <ImagenesContainer>
+                            {state.fotosDeGaleria.filter(foto => {
+                                return state.filtro == '' || foto.titulo.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
+                                    .includes(state.filtro.toLocaleLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+                            })
+                                .map(foto => <Imagen
+                                    key={foto.id}
+                                    foto={foto} />)
+                            }
+                        </ImagenesContainer>
+                    </SeccionFluida>
+                    <Populares />
 
-            </GaleriaContainer>
-        </>
+                </GaleriaContainer>
+            </>
     )
 }
 
